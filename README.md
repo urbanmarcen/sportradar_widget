@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## generate page or component
+
+npx generate-react-cli component LivescorePage 
+npx generate-react-cli component MatchComponent --type=page
 ## Available Scripts
 
 In the project directory, you can run:
