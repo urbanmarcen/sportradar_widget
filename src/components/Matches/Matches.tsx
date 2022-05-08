@@ -32,9 +32,15 @@ const Matches: FC<MatchesProps> = () => {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell align="right">Home</TableCell>
-            <TableCell align="center">Score</TableCell>
-            <TableCell align="left">Away</TableCell>
+            <TableCell width={"40%"} align="right">
+              Home
+            </TableCell>
+            <TableCell width={"20%"} align="center">
+              Score
+            </TableCell>
+            <TableCell width={"40%"} align="left">
+              Away
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

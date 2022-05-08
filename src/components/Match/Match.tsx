@@ -1,4 +1,4 @@
-import {  TableCell, TableRow } from "@mui/material";
+import { TableCell, TableRow } from "@mui/material";
 import MatchScore from "components/MatchScore/MatchScore";
 import React, { FC } from "react";
 import IMatch from "types/IMatch";
@@ -7,7 +7,7 @@ interface MatchProps {
   matchData?: IMatch;
 }
 
-const Match: FC<MatchProps> = ({ matchData = {} }) => (
+const Match: FC<MatchProps> = ({ matchData = { match_id: 0 } }) => (
   <TableRow data-testid={`Match-${matchData.match_id}`}>
     <TableCell align="right">
       {matchData.home_team_name}{" "}
@@ -17,7 +17,10 @@ const Match: FC<MatchProps> = ({ matchData = {} }) => (
       />
     </TableCell>
     <TableCell align="center" title={`MatchID - ${matchData.match_id} `}>
-      <MatchScore score_home={matchData.home_score} score_away={matchData.away_score} />      
+      <MatchScore
+        score_home={matchData.home_score}
+        score_away={matchData.away_score}
+      />
     </TableCell>
     <TableCell align="left">
       <img

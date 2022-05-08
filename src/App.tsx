@@ -14,13 +14,13 @@ function App() {
   );
 }
 
-function AppWrapper() {
-  return (
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-}
+type Props = {
+  children: JSX.Element;
+};
+
+const AppWrapper = ({ children }: Props) => (
+  <Provider store={store}>{children}</Provider>
+);
 
 export default App;
 export { AppWrapper };

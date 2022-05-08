@@ -1,8 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from "react";
 
-const LazyMatch = lazy(() => import('./Match'));
+const LazyMatch = lazy(() => import("./Match"));
 
-const Match = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode; }) => (
+const Match = (
+  props: JSX.IntrinsicAttributes & { children?: React.ReactNode }
+) => (
   <Suspense fallback={null}>
     <LazyMatch {...props} />
   </Suspense>

@@ -3,9 +3,9 @@ import IMatch from "./IMatch";
 import ITeam from "./ITeam";
 
 interface ILivescore {
-    matches: IMatch[];
-    events: IEvent[];
-    teams: ITeam[];
-  }
+  matches: IMatch[];
+  events: IEvent[];
+  teams: ITeam[];
+}
 
-  export default ILivescore;
+export default ILivescore;

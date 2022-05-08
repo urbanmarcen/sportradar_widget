@@ -1,8 +1,10 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense } from "react";
 
-const LazyLivescore = lazy(() => import('./Livescore'));
+const LazyLivescore = lazy(() => import("./Livescore"));
 
-const Livescore = (props: JSX.IntrinsicAttributes & { children?: React.ReactNode; }) => (
+const Livescore = (
+  props: JSX.IntrinsicAttributes & { children?: React.ReactNode }
+) => (
   <Suspense fallback={null}>
     <LazyLivescore {...props} />
   </Suspense>

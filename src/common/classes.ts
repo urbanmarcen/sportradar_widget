@@ -38,7 +38,6 @@ class Match implements IMatch {
   }
 }
 
-
 //   main Livescore data processing
 class Livescore {
   private matches: IMatch[] = [];
