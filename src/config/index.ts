@@ -1,5 +1,8 @@
-const MAINAPIURL = "http://vgcommonstaging.aitcloud.de/";
+const MAIN_API_URL = "http://vgcommonstaging.aitcloud.de/";
+const STATS_POLLING_INERVAL = 10000; // in milliseconds
+
 
 export {
-    MAINAPIURL
+    MAIN_API_URL,
+    STATS_POLLING_INERVAL
 }

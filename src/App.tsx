@@ -1,17 +1,16 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
 
 // redux
 import { store } from "store/store";
 import { Provider } from "react-redux";
 import Livescore from "pages/Livescore/Livescore";
+import { Container } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
-      <Livescore/>
-    </div>
+    <Container>
+      <Livescore />
+    </Container>
   );
 }
 

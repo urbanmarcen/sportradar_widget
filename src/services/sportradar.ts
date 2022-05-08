@@ -1,19 +1,17 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { MAINAPIURL } from "../config";
+import ILivescore from "types/ILivescore";
+import { MAIN_API_URL } from "../config";
 //import { Pokemon } from './types'
 
-type Livescore = {
-  matches: number[];
-  teams: number[];
-}
+
 
 // Define a service using a base URL and expected endpoints
 export const livescoreApi = createApi({
   reducerPath: "livescoreApi",
-  baseQuery: fetchBaseQuery({ baseUrl: MAINAPIURL }),
+  baseQuery: fetchBaseQuery({ baseUrl: MAIN_API_URL }),
   endpoints: (builder) => ({
-    getLivescore: builder.query<Livescore, string>({
+    getLivescore: builder.query<ILivescore, string>({
       query () { return  `livescore/` },
     }),
   }),

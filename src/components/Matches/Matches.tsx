@@ -1,28 +1,52 @@
-import Livescore from "common/Livescore";
 import Match from "components/Match/Match";
 import React, { FC } from "react";
 import { useGetLivescoreQuery } from "services/sportradar";
+import Livescore from "common/classes";
+import {
+  Table,
+  TableRow,
+  TableCell,
+  TableHead,
+  TableBody,
+  TableContainer,
+  Paper,
+} from "@mui/material";
 
+import { STATS_POLLING_INERVAL } from "config";
 interface MatchesProps {}
 
 const Matches: FC<MatchesProps> = () => {
+  const { data, isError, isLoading } = useGetLivescoreQuery("", {
+    pollingInterval: STATS_POLLING_INERVAL,
+  });
 
-  const { data, error, isLoading } = useGetLivescoreQuery("",{pollingInterval: 10000});
+  const SRMatches = new Livescore();
+  SRMatches.Build(
+    data !== undefined ? data : { matches: [], events: [], teams: [] }
+  );
 
-  console.log('data', data);
+  const allMatches = SRMatches.prepareData();
 
-  let matches = [];
-
-  /*if(data.matches !== undefined) {
-    matches = data.matches;
-  }*/
-
-  //const { matches } = new Livescore(data);
-    
-  return <div data-testid="Matches">
-    
-    {data !== undefined && data.matches !== undefined && data.matches.map((match:any)=><Match matchData={match}/>)}
-  </div>;
+  return (
+    <TableContainer component={Paper} data-testid="Matches">
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Home</TableCell>
+            <TableCell align="center">Score</TableCell>
+            <TableCell align="left">Away</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {allMatches !== undefined &&
+            allMatches !== undefined &&
+            allMatches.map((match: any) => (
+              <Match key={`match-${match.match_id}`} matchData={match} />
+            ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
 };
 
 export default Matches;
