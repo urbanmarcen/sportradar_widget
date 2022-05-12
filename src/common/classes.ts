@@ -16,15 +16,15 @@ class Match implements IMatch {
   away_team_name: string;
 
   constructor({
-    match_id,
-    tournament_id,
-    round,
-    home_team_id,
-    away_team_id,
-    home_score,
-    away_score,
-    home_team_name,
-    away_team_name,
+    match_id = 0,
+    tournament_id = 0,
+    round = 0,
+    home_team_id = 0,
+    away_team_id = 0,
+    home_score = 0,
+    away_score = 0,
+    home_team_name = "",
+    away_team_name = "",
   }: IMatch) {
     this.match_id = match_id;
     this.tournament_id = tournament_id;
@@ -74,7 +74,7 @@ class Livescore {
             ev.event_type === "goal" &&
             ev.score_team === "away"
         )
-        .reduce((val, evt) => val + evt.score_amount, 0);
+        .reduce((val, evt) => val + (evt.score_amount??=0 ), 0);
       // add  home score
       tmpMatch.home_score = this.events
         .filter(
@@ -83,7 +83,7 @@ class Livescore {
             ev.event_type === "goal" &&
             ev.score_team === "home"
         )
-        .reduce((val, evt) => val + evt.score_amount, 0);
+        .reduce((val, evt) => val + (evt.score_amount??=0), 0);
       tmpMatches.push(tmpMatch);
     });
 
