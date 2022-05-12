@@ -74,7 +74,7 @@ class Livescore {
             ev.event_type === "goal" &&
             ev.score_team === "away"
         )
-        .reduce((val, evt) => val + (evt.score_amount??=0 ), 0);
+        .reduce((val, evt) => val + (evt.score_amount ??= 0), 0);
       // add  home score
       tmpMatch.home_score = this.events
         .filter(
@@ -83,7 +83,7 @@ class Livescore {
             ev.event_type === "goal" &&
             ev.score_team === "home"
         )
-        .reduce((val, evt) => val + (evt.score_amount??=0), 0);
+        .reduce((val, evt) => val + (evt.score_amount ??= 0), 0);
       tmpMatches.push(tmpMatch);
     });
 
